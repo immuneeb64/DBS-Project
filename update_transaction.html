@@ -1,0 +1,12 @@
+<!-- Update Transaction Template: update_transaction.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Update Transaction</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="return_date" class="form-label">Return Date</label>
+        <input type="date" class="form-control" id="return_date" name="return_date" value="{{ transaction[4] }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Transaction</button>
+</form>
+{% endblock %}

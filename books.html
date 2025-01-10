@@ -1,0 +1,56 @@
+<!-- Books Template: books.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Books</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div class="mb-3">
+        <label for="author_id" class="form-label">Author ID</label>
+        <input type="number" class="form-control" id="author_id" name="author_id" required>
+    </div>
+    <div class="mb-3">
+        <label for="category_id" class="form-label">Category ID</label>
+        <input type="number" class="form-control" id="category_id" name="category_id" required>
+    </div>
+    <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="text" class="form-control" id="isbn" name="isbn" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Book</button>
+</form>
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author ID</th>
+            <th>Category ID</th>
+            <th>ISBN</th>
+            <th>Availability</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book[0] }}</td>
+            <td>{{ book[1] }}</td>
+            <td>{{ book[2] }}</td>
+            <td>{{ book[3] }}</td>
+            <td>{{ book[4] }}</td>
+            <td>{{ "Yes" if book[5] else "No" }}</td>
+            <td>
+                <a href="/books/update/{{ book[0] }}" class="btn btn-warning btn-sm">Update</a>
+                <form action="/books/delete/{{ book[0] }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

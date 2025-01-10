@@ -1,0 +1,24 @@
+<!-- Update Book Template: update_book.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Update Book</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{ book[1] }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="author_id" class="form-label">Author ID</label>
+        <input type="number" class="form-control" id="author_id" name="author_id" value="{{ book[2] }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="category_id" class="form-label">Category ID</label>
+        <input type="number" class="form-control" id="category_id" name="category_id" value="{{ book[3] }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="text" class="form-control" id="isbn" name="isbn" value="{{ book[4] }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Book</button>
+</form>
+{% endblock %}

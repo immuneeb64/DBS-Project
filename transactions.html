@@ -1,0 +1,50 @@
+<!-- Transactions Template: transactions.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Transactions</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="book_id" class="form-label">Book ID</label>
+        <input type="number" class="form-control" id="book_id" name="book_id" required>
+    </div>
+    <div class="mb-3">
+        <label for="member_id" class="form-label">Member ID</label>
+        <input type="number" class="form-control" id="member_id" name="member_id" required>
+    </div>
+    <div class="mb-3">
+        <label for="issue_date" class="form-label">Issue Date</label>
+        <input type="date" class="form-control" id="issue_date" name="issue_date" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Transaction</button>
+</form>
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Book ID</th>
+            <th>Member ID</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction[0] }}</td>
+            <td>{{ transaction[1] }}</td>
+            <td>{{ transaction[2] }}</td>
+            <td>{{ transaction[3] }}</td>
+            <td>{{ transaction[4] }}</td>
+            <td>
+                <a href="/transactions/update/{{ transaction[0] }}" class="btn btn-warning btn-sm">Update</a>
+                <form action="/transactions/delete/{{ transaction[0] }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

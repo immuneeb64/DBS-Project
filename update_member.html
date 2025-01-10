@@ -1,0 +1,20 @@
+<!-- Update Member Template: update_member.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Update Member</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ member[1] }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="contact" class="form-label">Contact</label>
+        <input type="text" class="form-control" id="contact" name="contact" value="{{ member[2] }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="membership_date" class="form-label">Membership Date</label>
+        <input type="date" class="form-control" id="membership_date" name="membership_date" value="{{ member[3] }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Member</button>
+</form>
+{% endblock %}
